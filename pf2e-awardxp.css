@@ -1,102 +1,214 @@
+/* --- THEME VARIABLES --- */
+:root {
+    --souls-bg: #121010;
+    --souls-panel: #1c1a1a;
+    --souls-gold: #c3a772;
+    --souls-gold-dim: #8b7548;
+    --souls-red: #8a1c1c;
+    --souls-text: #d4d0c8;
+    --souls-border: #3b3632;
+    --souls-shadow: rgba(0, 0, 0, 0.8);
+    --souls-font: "Cinzel", "Garamond", "Palatino Linotype", serif;
+}
+
+/* --- DESTINATIONS & HERO GRID --- */
 .destinations {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    margin-bottom: 10px;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 15px; /* Replaces margin hacks for modern, even spacing */
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--souls-bg) 0%, #1a1818 100%);
+    border: 1px solid var(--souls-border);
+    box-shadow: inset 0 0 30px var(--souls-shadow), 0 5px 15px var(--souls-shadow);
+    border-radius: 4px;
 }
 
 .hero {
     display: flex;
     flex-direction: column;
-    align-self: auto;
-    align-items: center; /* Vertical alignment */
-    padding: 0 10px; /* Adjust margin between hero elements */
-    flex-basis: 25%; /* Each hero takes up 25% of the container width, allowing 4 heroes in a row */
-    box-sizing: border-box; /* Include padding and border in the total width */
+    align-items: center;
+    flex-basis: calc(20% - 15px); /* Accounts for gap, keeps 5 per row */
+    min-width: 80px; 
+    padding: 12px 10px;
+    box-sizing: border-box;
     text-align: center;
-    width:60px;
+    background: var(--souls-panel);
+    border: 1px solid var(--souls-border);
+    border-radius: 3px;
+    box-shadow: 0 4px 6px var(--souls-shadow);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect simulates a glowing ember or selected card */
+.hero:hover {
+    border-color: var(--souls-gold-dim);
+    box-shadow: 0 0 15px rgba(195, 167, 114, 0.15), 0 4px 6px var(--souls-shadow);
+    transform: translateY(-2px);
 }
 
 .hero img {
-    border:none;
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
+    border: 2px solid var(--souls-gold-dim);
+    border-radius: 50%; /* Makes tokens look like circular RPG medallions */
+    box-shadow: 0 0 10px var(--souls-shadow);
+    object-fit: cover;
+    filter: grayscale(15%) contrast(110%); /* Slight grimdark color suppression */
+    transition: filter 0.3s ease;
 }
 
-/* Additional styling for better spacing and alignment */
+.hero:hover img {
+    filter: grayscale(0%) contrast(120%);
+    border-color: var(--souls-gold);
+}
+
 .hero label {
-    margin-top: 10px; /* Adjust the margin as needed */
+    margin-top: 12px;
+    font-family: var(--souls-font);
+    color: var(--souls-gold-dim);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .hero .token {
-    margin-bottom: 5px; /* Adjust the margin as needed */
+    margin-bottom: 5px;
 }
 
 .hero .name { 
     min-width: 20px;
     display: block;
+    color: var(--souls-text);
+    font-family: "Garamond", serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
 }
 
-
+/* --- PF2E AWARD XP WINDOW --- */
 .pf2eawardxp .form-group {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-bottom: 15px; /* Adjust the margin as needed for spacing between form groups */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(139, 117, 72, 0.2); /* Faded gold divider */
 }
 
 .pf2eawardxp .form-group label {
-    margin-right: 10px; /* Adjust the margin between label and input as needed */
+    margin-right: 15px;
     text-align: right;
-    flex:0;
-    width:200px;
+    flex: 0 0 200px;
+    font-family: var(--souls-font);
+    color: var(--souls-gold);
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px #000;
 }
 
-.pf2eawardxp .form-group select {
-    width: 250px;
-    flex:1;
-    max-width: 300px;
-
-}
-
+/* Dark, parchment-like inputs */
+.pf2eawardxp .form-group select,
 .pf2eawardxp .form-group input {
-    width: 250px;
-    flex:1;
+    width: 100%;
+    flex: 1;
     max-width: 300px;
+    background: var(--souls-bg);
+    color: var(--souls-text);
+    border: 1px solid var(--souls-border);
+    padding: 8px 12px;
+    font-family: "Garamond", serif;
+    font-size: 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px var(--souls-shadow);
 }
 
+.pf2eawardxp .form-group select:focus,
+.pf2eawardxp .form-group input:focus {
+    border-color: var(--souls-red); /* Focus state flashes dark blood red */
+    box-shadow: 0 0 8px rgba(138, 28, 28, 0.4), inset 0 2px 5px var(--souls-shadow);
+}
+
+/* Thematic banner for XP gains */
 .pf2eawardxp .xp-block {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(90deg, transparent, rgba(138, 28, 28, 0.15), transparent);
+    border-top: 1px solid rgba(139, 117, 72, 0.4);
+    border-bottom: 1px solid rgba(139, 117, 72, 0.4);
 }
 
 .pf2eawardxp .xp-text {
     font-weight: bold;
+    font-family: var(--souls-font);
+    font-size: 1.2rem;
+    color: var(--souls-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(195, 167, 114, 0.3); /* Ethereal glow */
 }
 
 .pf2eawardxp .xp-image {
-    margin: 10px 10px 10px 10px;
-    width:45px;
+    margin: 0 15px;
+    width: 45px;
     height: 45px;
-    border: none;
+    border: 1px solid var(--souls-gold-dim);
+    border-radius: 4px;
+    box-shadow: 0 0 8px var(--souls-shadow);
 }
 
 .pf2eawardxp .recipients-block {
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 20px;
+    padding: 10px;
 }
 
 .pf2eawardxp .recipient-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
+/* Style list items like small engraved tags */
 .pf2eawardxp .recipient-list li {
-    display: inline;
-    margin-right: 10px; /* Adjust the margin as needed */
+    background: var(--souls-panel);
+    border: 1px solid var(--souls-border);
+    padding: 4px 10px;
+    border-radius: 2px;
+    color: var(--souls-text);
+    font-family: "Garamond", serif;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 5px var(--souls-shadow);
 }
 
-.pf2eawardxp .submit{
-    width:100%;
+/* XP submit button */
+.pf2eawardxp .submit {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: linear-gradient(to bottom, #2a2522, var(--souls-bg));
+    color: var(--souls-gold);
+    border: 1px solid var(--souls-gold-dim);
+    font-family: var(--souls-font);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px var(--souls-shadow);
+    border-radius: 2px;
+}
+
+.pf2eawardxp .submit:hover {
+    background: linear-gradient(to bottom, var(--souls-red), #4a0d0d);
+    color: #ffffff;
+    border-color: #ff6b6b;
+    box-shadow: 0 0 15px rgba(138, 28, 28, 0.6);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
