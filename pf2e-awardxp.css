@@ -16,7 +16,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px; /* Replaces margin hacks for modern, even spacing */
+    gap: 15px;
     margin-bottom: 20px;
     padding: 20px;
     background: linear-gradient(135deg, var(--souls-bg) 0%, #1a1818 100%);
@@ -29,8 +29,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: calc(20% - 15px); /* Accounts for gap, keeps 5 per row */
-    min-width: 80px; 
+    justify-content: flex-start;
+    /* Use responsive flex sizing instead of strict percentages to prevent squishing */
+    flex: 1 1 80px; 
+    max-width: 120px; 
     padding: 12px 10px;
     box-sizing: border-box;
     text-align: center;
@@ -48,14 +50,25 @@
     transform: translateY(-2px);
 }
 
+/* Forces the token wrapper to center its contents */
+.hero .token {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
 .hero img {
+    display: block;
     height: 55px;
     width: 55px;
+    margin: 0 auto; /* Ensures absolute centering */
     border: 2px solid var(--souls-gold-dim);
-    border-radius: 50%; /* Makes tokens look like circular RPG medallions */
+    border-radius: 50%;
     box-shadow: 0 0 10px var(--souls-shadow);
-    object-fit: cover;
-    filter: grayscale(15%) contrast(110%); /* Slight grimdark color suppression */
+    object-fit: cover; /* Prevents the image from stretching/skewing */
+    filter: grayscale(15%) contrast(110%);
     transition: filter 0.3s ease;
 }
 
@@ -65,53 +78,53 @@
 }
 
 .hero label {
-    margin-top: 12px;
+    margin-top: auto;
     font-family: var(--souls-font);
     color: var(--souls-gold-dim);
     font-size: 0.85rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
-
-.hero .token {
-    margin-bottom: 5px;
+    word-wrap: break-word;
+    width: 100%;
 }
 
 .hero .name { 
-    min-width: 20px;
     display: block;
+    width: 100%;
     color: var(--souls-text);
     font-family: "Garamond", serif;
     font-weight: bold;
     text-shadow: 1px 1px 2px #000;
+    word-wrap: break-word; /* Prevents long names from breaking the box layout */
+    line-height: 1.2;
 }
 
 /* --- PF2E AWARD XP WINDOW --- */
 .pf2eawardxp .form-group {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between; /* Better responsive spacing */
+    gap: 10px; /* Replaces margin-right on labels */
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid rgba(139, 117, 72, 0.2); /* Faded gold divider */
+    border-bottom: 1px solid rgba(139, 117, 72, 0.2);
 }
 
 .pf2eawardxp .form-group label {
-    margin-right: 15px;
     text-align: right;
-    flex: 0 0 200px;
+    flex: 1 1 40%; /* Allows the label to scale cleanly */
     font-family: var(--souls-font);
     color: var(--souls-gold);
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 2px #000;
+    line-height: 1.2;
 }
 
 /* Dark, parchment-like inputs */
 .pf2eawardxp .form-group select,
 .pf2eawardxp .form-group input {
     width: 100%;
-    flex: 1;
-    max-width: 300px;
+    flex: 1 1 60%; /* Allows the input to take the remaining space dynamically */
     background: var(--souls-bg);
     color: var(--souls-text);
     border: 1px solid var(--souls-border);
@@ -126,7 +139,7 @@
 
 .pf2eawardxp .form-group select:focus,
 .pf2eawardxp .form-group input:focus {
-    border-color: var(--souls-red); /* Focus state flashes dark blood red */
+    border-color: var(--souls-red);
     box-shadow: 0 0 8px rgba(138, 28, 28, 0.4), inset 0 2px 5px var(--souls-shadow);
 }
 
@@ -149,7 +162,7 @@
     color: var(--souls-gold);
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 0 0 8px rgba(195, 167, 114, 0.3); /* Ethereal glow */
+    text-shadow: 0 0 8px rgba(195, 167, 114, 0.3);
 }
 
 .pf2eawardxp .xp-image {
@@ -159,6 +172,7 @@
     border: 1px solid var(--souls-gold-dim);
     border-radius: 4px;
     box-shadow: 0 0 8px var(--souls-shadow);
+    object-fit: cover; /* Prevents the XP icon from skewing */
 }
 
 .pf2eawardxp .recipients-block {
