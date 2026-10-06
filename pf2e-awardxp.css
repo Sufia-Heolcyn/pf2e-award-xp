@@ -30,7 +30,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* Use responsive flex sizing instead of strict percentages to prevent squishing */
     flex: 1 1 80px; 
     max-width: 120px; 
     padding: 12px 10px;
@@ -79,32 +78,36 @@
 
 .hero label {
     margin-top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: var(--souls-font);
     color: var(--souls-gold-dim);
     font-size: 0.85rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    word-wrap: break-word;
-    width: 100%;
 }
 
 .hero .name { 
     display: block;
-    width: 100%;
+    width: min-content; /* Forces linebreaks at every space */
+    margin: 0 auto; 
+    height: 3.5em; /* Locks vertical height so long names don't stretch the card */
     color: var(--souls-text);
     font-family: "Garamond", serif;
     font-weight: bold;
     text-shadow: 1px 1px 2px #000;
-    word-wrap: break-word; /* Prevents long names from breaking the box layout */
-    line-height: 1.2;
+    line-height: 1.1;
+    text-align: center;
 }
 
 /* --- PF2E AWARD XP WINDOW --- */
 .pf2eawardxp .form-group {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Better responsive spacing */
-    gap: 10px; /* Replaces margin-right on labels */
+    justify-content: space-between; 
+    gap: 10px; 
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(139, 117, 72, 0.2);
@@ -112,7 +115,7 @@
 
 .pf2eawardxp .form-group label {
     text-align: right;
-    flex: 1 1 40%; /* Allows the label to scale cleanly */
+    flex: 1 1 40%; 
     font-family: var(--souls-font);
     color: var(--souls-gold);
     letter-spacing: 0.5px;
@@ -124,7 +127,7 @@
 .pf2eawardxp .form-group select,
 .pf2eawardxp .form-group input {
     width: 100%;
-    flex: 1 1 60%; /* Allows the input to take the remaining space dynamically */
+    flex: 1 1 60%; 
     background: var(--souls-bg);
     color: var(--souls-text);
     border: 1px solid var(--souls-border);
@@ -134,6 +137,7 @@
     border-radius: 2px;
     outline: none;
     transition: all 0.3s ease;
+    box-sizing: border-box;
     box-shadow: inset 0 2px 5px var(--souls-shadow);
 }
 
@@ -172,7 +176,7 @@
     border: 1px solid var(--souls-gold-dim);
     border-radius: 4px;
     box-shadow: 0 0 8px var(--souls-shadow);
-    object-fit: cover; /* Prevents the XP icon from skewing */
+    object-fit: cover; 
 }
 
 .pf2eawardxp .recipients-block {
