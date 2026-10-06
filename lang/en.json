@@ -4,7 +4,7 @@
       "Header":"Select the Encounter difficulty or enter a custom value.",
       "Action": "Distribute XP",
       "Reason": "Reason",
-      "Message": "{name} has been awarded {award} XP for {description}.",
+      "Message": "{award} XP Earned. {description}.",
       "NoDestinations": "The Party has no members",
       "NotGMError": "The /award command is only available to GMs.",
       "UnrecognizedWarning": "Unable to parse {commands}. The /award command should in the syntax '/award 10 Earned some EXP'.",
