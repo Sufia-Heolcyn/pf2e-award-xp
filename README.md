@@ -1,17 +1,15 @@
 # PF2e Award XP
 
-A Foundry VTT module for the Pathfinder 2e system that streamlines the process of awarding Experience Points. It automatically calculates and prompts XP awards after combat, adds convenient chat commands, and introduces custom journal enrichers for seamless reward distribution directly from your notes.
+Open an XP award dialog after combat prefilled with XP Value of the previous combat to award all PCs who were part of the combat.
 
-## ✨ Features
+Adds journal enrichers to allow reward dialog inside journals!
 
-* **Post-Combat Automation**: Automatically opens an XP award dialog after a combat encounter ends, pre-filled with the calculated XP value of the defeated enemies.
-* **Smart Distribution**: Automatically targets and awards all Player Characters (PCs) who participated in the combat.
-* **Journal Enrichers**: Create clickable links inside your journal entries to distribute specific XP awards on the fly.
-* **Chat Commands**: Quickly award XP directly from the chat box using simple commands.
+Original code by [jvasko](https://github.com/jsavko).
+Edited to have a more soulslike aesthetic.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 1. Post-Combat Auto-Prompt
 Once an encounter is completed, a dialog box will automatically appear. It will be pre-filled with the encounter's XP value and will list the PCs involved in the combat. 
