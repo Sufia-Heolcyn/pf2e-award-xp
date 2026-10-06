@@ -14,7 +14,8 @@ Edited to have a more soulslike aesthetic.
 ### 1. Post-Combat Auto-Prompt
 Once an encounter is completed, a dialog box will automatically appear. It will be pre-filled with the encounter's XP value and will list the PCs involved in the combat. 
 
-![Automated XP Dialog](https://github.com/jsavko/pf2e-award-xp/assets/192591/fbd1cfb1-d0a2-4d67-b734-80a99a60156f)
+![XP Prompt](https://i.imgur.com/8XmvU52.png)
+![XP Prompt](https://i.imgur.com/WsGxrhO.png)
 
 ### 2. Chat Commands
 You can manually award XP at any time using the `/award` macro in the chat box.
